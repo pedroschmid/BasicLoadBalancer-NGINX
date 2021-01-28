@@ -1,2 +1,2 @@
 start:
-	docker-compose up
+	docker-compose --compatibility up --build
