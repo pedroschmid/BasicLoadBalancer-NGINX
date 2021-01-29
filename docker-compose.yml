@@ -4,21 +4,21 @@ services:
   nginx:
     image: nginx:alpine
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./server/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - api
     ports:
       - "80:80"
     networks:
-      - "api.network"
+      - "api_network"
   api:
-    build: ./application
+    build: ./api
     ports:
       - "5000"
     restart: "always"
     networks:
-      - "api.network"
+      - "api_network"
     deploy:
       replicas: 5
 networks:
-  api.network:
+  api_network:
